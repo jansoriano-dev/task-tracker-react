@@ -3,18 +3,17 @@
 
 import React from 'react'
 import Button from './Button'
+import {useLocation} from 'react-router-dom'
 
-const Header = ({title}) => {
-    const testClick =()=>{
-        console.log('test')
-    }
+const Header = ({title,onAdd,showAdd}) => {
+const location = useLocation()
     return (
         <div>
             <header className='header'>
                 <h1 >
                    {title}
                 </h1>
-                <Button color='#152238' text='Add' onClick={testClick}/>
+               {location.pathname==='/' &&<Button color={showAdd?'#088582':'#152238'} text={showAdd ? 'Close':'Add'} onClick={onAdd}/>} 
             </header>
         </div>
     )
